@@ -13,7 +13,7 @@ Window::Window() : event()
 	Uint32* pixels = static_cast<Uint32*>(icon->pixels);
     for (int y = 0; y < 1000; y++) {
         for (int x = 0; x < 1000; x++) {
-            if (pow(500 - x, 2)+ pow(500 - y, 2) < 250000) //TODO: Theres alot of magic numbers here
+            if (pow(500 - x, 2)+ pow(500 - y, 2) < 250000)
             {
                 pixels[y*1000+x] = 0xff0000ff;
             }
