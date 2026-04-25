@@ -4,8 +4,8 @@ A simple C++ project simulating particle life
 
 # To use
 
-Press P to pause
-Press O to open settings
+Press P to pause <br>
+Press O to open settings <br>
 Press R to restart the simulation
 
 # Build
