@@ -103,7 +103,7 @@ void GUIContext::UpdateGUI() //Load all buffer data into properties
         Propcopy.particle_dist.push_back(std::atoi(MenuTextBuff[n].data()));
     }
 
-    //Convert The PropertyBuffer into float and int. //TODO: Make better
+    //Convert The PropertyBuffer into float and int.
     Propcopy.P_radius = std::atoi(PropertyTextBuff["Particle_Radius"].data());
     Propcopy.Repel_Force = std::atof(PropertyTextBuff["Repel_Force"].data());
     Propcopy.Repel_Distance = std::atof(PropertyTextBuff["Repel_Distance"].data());
@@ -127,7 +127,7 @@ GUIContext::~GUIContext ()
 
 
 GuiCallBack Create_UIDisplay() {
-    bool Display = 1; //TODO: Fix this
+    bool Display = 1;
 
     if (GUI == nullptr)
     {
@@ -243,7 +243,7 @@ void Create_Menu()
         Draw_List -> AddCircleFilled( ImVec2(top_left.x + MenuRadius + circle_padding, top_left.y + P_container.y/2), MenuRadius, ImU32(0xFF << 24u | Uint8(255*GUI->ColBuff[n][2]) << 16u | Uint8(255*GUI->ColBuff[n][1]) << 8u | Uint8(255*GUI->ColBuff[n][0])));
         ImGui::SetCursorScreenPos(ImVec2(top_left.x + 2*(MenuRadius + circle_padding), top_left.y + circle_padding));
         ImGui::PushID(n);
-        ImGui::PushItemWidth(P_container.x - 2*(MenuRadius+circle_padding) - 1); //TODO: This 1 represents the boarder width of the menu object, you should make that a variable
+        ImGui::PushItemWidth(P_container.x - 2*(MenuRadius+circle_padding) - 1); 
         ImGui::PushFont(ImGui::GetFont(), MenuFontSize);
         ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(ImGui::GetStyle().ItemSpacing.x, MenuRadius - MenuFontSize/2));
         ImGui::InputText("##Textedit", GUI->MenuTextBuff[n].data(), MenuTextSize + 1);
@@ -273,8 +273,8 @@ void Create_Menu()
         }
         GUI->Propcopy.Max_Force.emplace_back(GUI->Propcopy.typenum,0);
         GUI->GridTextBuff.emplace_back(GUI->Propcopy.typenum,std::vector<char>(GridTextSize+1));
-        GUI->ColBuff.push_back(new float[3]{1,1,1}); //TODO: This is a magic number, maybe make a default_color variable
-        GUI->Propcopy.particle_dist.push_back(100); //TODO: Thats a magic number, MAKE DEFAULT VARIABLES
+        GUI->ColBuff.push_back(new float[3]{1,1,1}); 
+        GUI->Propcopy.particle_dist.push_back(100); 
         GUI->Propcopy.particlenum+=100;
         std::string string("100" ,MenuTextSize + 1);
         GUI->MenuTextBuff.emplace_back(string.begin(), string.end());
@@ -295,7 +295,7 @@ void Create_Menu()
             GUI->GridTextBuff.pop_back();
             GUI->MenuTextBuff.pop_back();
             GUI->Propcopy.particlenum-=GUI->Propcopy.particle_dist.back();
-            GUI->Propcopy.particle_dist.pop_back(); //TODO: Thats a magic number
+            GUI->Propcopy.particle_dist.pop_back(); 
             GUI->Propcopy.color.pop_back();
         }
     }
@@ -322,7 +322,7 @@ void Create_Properties()
     ImGui::BeginChild("##Properties", ImVec2(properties.w, properties.h), false, ImGuiWindowFlags_NoScrollbar);
     ImGui::PushFont(ImGui::GetFont(), PropertyFontSize);
 
-    for (auto &value : GUI->PropertyTextBuff) { //TODO: Make this a function;
+    for (auto &value : GUI->PropertyTextBuff) { 
         Create_PropertyText(value.first, value.second);
     }
     //Make Torus

@@ -11,8 +11,6 @@
 #include <fstream>
 #include "Properties.h"
 
-//TODO: Put all layout constants here when cleaning the code
-
 struct TorusBuffer
 {
     bool enabled;
@@ -41,12 +39,11 @@ struct GUIContext
     void UpdateGUI();
     ~GUIContext();
 };
+
 //Properties and other GUI init stuff
-//TODO: you should probably put all this stuff into a function like "CreateUIContext or something like that maybe"
 inline GUIContext* GUI = nullptr;
 
 
-//TODO: CONVERT EVERYTHING INTO PERCENTAGES OF PARENT OBJECTS
 //Layout Constants
 const float MenuButtonsHeightRatio = .2; //The height of the UI divided by the height of the Menu_bottons
 const float SaveButtonsHeightRatio = .3; //The height of the Properties plus Save Buttons divided by the height of the save buttons
@@ -64,14 +61,14 @@ const Rect Save_Buttons(UI.x, properties.y + properties.h, properties.w, UI.h*Sa
 
 //Constants
 constexpr int GridTextSize = 4;
-const ImVec2 P_container(100, 50); //The dimensions of the Menu Rectangles
-const float MenuSpacing = 50.0; //The distance between menu rectangles
-const float MenuRadius = P_container.y * MenuCircleDiameterRatio/2; //The radius of the menu circles
-const float circle_padding = P_container.y/2 - MenuRadius; // The distance between the edge of the circles and the edge of their containment rectangles
-const float GridRadius = 50; // The radius of the grid circles
-const ImVec2 MenuPadding(20, 20); //The padding on the menu.
-const float GridSpacing = 50.0; //The width of grid squares
-const float GridFont = 20.0; //The font size in the grid
+const ImVec2 P_container(100, 50); 
+const float MenuSpacing = 50.0; 
+const float MenuRadius = P_container.y * MenuCircleDiameterRatio/2; 
+const float circle_padding = P_container.y/2 - MenuRadius; 
+const float GridRadius = 50; 
+const ImVec2 MenuPadding(20, 20); 
+const float GridSpacing = 50.0;
+const float GridFont = 20.0;
 const float MenuButtonSize = 50;
 const ImVec2 MenuButtonPadding(20,20);
 const float PropertyFontSize = 20.0;
@@ -87,13 +84,13 @@ const float PropertyWidgetSpacing = 10.0;
 constexpr float SymbolThickness = 4;
 const float MenuSymbolPadding = MenuButtonSize*(1-MenuButtonSymbolRatio)/2;
 
-GuiCallBack Create_UIDisplay(); //TODO: You can get rid of types in all these functions. Just use the size of the color array
-void Create_Grid(); //To Be called within Create_UIDisplay
-void Create_Menu(); //To Be called within Create_UIDisplay
-void Create_Properties(); //To Be called within Create_UIDisplay
+GuiCallBack Create_UIDisplay();
+void Create_Grid(); 
+void Create_Menu(); 
+void Create_Properties();
 void Create_Torus();
 void Create_PropertyText(const std::string &name, std::vector<char> &buff);
-GuiCallBack Create_SaveButtons(); //To be called within Create_UIDisplay
+GuiCallBack Create_SaveButtons(); 
 
 std::vector<char> Create_PropertyBuffer(float input, int PropertyTextBuffSize);
 void RenderUIDisplay();

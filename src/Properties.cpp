@@ -3,8 +3,7 @@
 #include <iostream>
 #include <unordered_map>
 #include <string>
-Properties::Properties() //TODO: You know why this is bad
-{
+Properties::Properties() {
     Read();
 }
 
@@ -23,7 +22,7 @@ void Properties::Read()
     }
 
     propertytype category;
-    std::unordered_map<std::string, propertytype> map = { //TODO: FIX THIS NOOTN$EIOFNUIDN SWNDOIKO
+    std::unordered_map<std::string, propertytype> map = { 
         {"PARTICLE_RADIUS", PARTICLE_RADIUS},
         {"NUMBER", NUMBER},
        {"TYPENUM", TYPENUM},
@@ -57,7 +56,7 @@ void Properties::Read()
                 typenum = atof(line.c_str());
                 break;
                 case COLOR:
-                color.push_back(atof(line.c_str())); //TODO: Does not convert into Uint32 to my knoledge
+                color.push_back(atof(line.c_str())); 
                 break;
                 case FORCES:
                 if (linenum%typenum == 0)

@@ -3,7 +3,7 @@
 #include <algorithm>
 #include "Sim.h"
 
-struct hasher //TODO: What the fuck do I even do with this??
+struct hasher
 {
     std::size_t operator() (const std::pair<int , int> &pair) const
     {
@@ -48,7 +48,6 @@ Sim::Sim() :
     TorusDim = {win.width, win.height};
 
     //init ImGui
-    //TODO: Consider making this a function in GUI.h
     ImGui::CreateContext();
     ImGui_ImplSDL3_InitForSDLRenderer(win.window, renderer.renderer);
     ImGui_ImplSDLRenderer3_Init(renderer.renderer);
@@ -147,7 +146,7 @@ void Sim::Get_Force(int threadnum, int threadtotal) {
         float initx = particles[init].posx;
         float inity = particles[init].posy;
         for (int target = 0; target < particle_num; target++) {
-            if (init != target) { //TODO: Maybe move some of these operations into physics.cpp
+            if (init != target) {
                 float dx = particles[target].posx - initx;
                 if (std::abs(dx) < Physics_Engine.Distance) {
                     float dy = particles[target].posy - inity;
@@ -168,18 +167,6 @@ void Sim::Get_Force(int threadnum, int threadtotal) {
 
 void Sim::Move_Step()
 {
-    /*
-    std::vector<std::thread> threads;
-    for (int n = 0; n < 10; n++) {
-        threads.push_back(std::thread(&Sim::Get_Force, this, n, 10));
-    }
-    for (auto &t : threads)
-        t.join();
-    */
-
-
-
-
     //update acceleration for all particles
 
     std::unordered_map<std::pair<int, int>, std::vector<Particle*>, hasher> hashmap;
@@ -320,7 +307,7 @@ void Sim::Move_Step()
     }
 }
 
-void Sim::Update_Properties() //TODO: This may not need to be a function if its only used in Restart_Simulation()
+void Sim::Update_Properties() 
 {
     //Clear P_Textures
     for (int n = 0; n < typenum; n++)
@@ -360,7 +347,7 @@ void Sim::Restart_Simulation()
     //Update Sim properties
     particles.clear();
     Update_Properties();
-    //Replace particles //TODO: I think this is duplicated code
+    //Replace particles 
     for (int n = 0; n < particle_dist.size(); n++) {
         for (int i = 0; i < particle_dist[n]; i++) {
             particles.emplace_back(
@@ -406,7 +393,7 @@ void Sim::Pull_Event()
                     cam.zoom /= 1.02;
                 break;
             case SDL_EVENT_KEY_DOWN:
-                switch (win.event.key.key) {//TODO: Add a proper keyboard handler
+                switch (win.event.key.key) {
             case SDLK_P:
                     if (!settings.pause)
                         settings.pause = true;

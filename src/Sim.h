@@ -24,7 +24,7 @@ class Sim
     int particle_num;
     bool run;
     UI_settings settings;
-    bool mouse_down; //I genuinely dont know what to do with this but this has to have a better solution. Make it go in window at he very least
+    bool mouse_down; 
     bool Torus;
     std::pair<int, int> TorusDim;
    
@@ -40,11 +40,11 @@ class Sim
 
     //Functions
     Sim();
-    std::array<std::vector<float>, 2> Get_Coords(); //turn this into VEC2
-    std::array<std::vector<float>, 2> Get_Vel(); //TODO: MAKE THESE INTO ONE FUNCTION
+    std::array<std::vector<float>, 2> Get_Coords();
+    std::array<std::vector<float>, 2> Get_Vel();
     std::array<std::vector<float>, 2> Get_Acc();
     std::vector<int> Get_Types();
-    void Get_Force(int threadnum, int threadtotal); // function to calculate the force between two particles //TODO: maybe move this to physics somehow???
+    void Get_Force(int threadnum, int threadtotal); // function to calculate the force between two particles
     void Move_Step();
     ~Sim();
     void Pull_Event();
